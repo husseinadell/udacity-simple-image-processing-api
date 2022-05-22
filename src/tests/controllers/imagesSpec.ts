@@ -1,5 +1,5 @@
 import supertest from 'supertest';
-import { myFunc, app } from '../../index';
+import { app } from '../../index';
 import { getImagePath } from '../../utils/image-manager';
 import { promises as fs } from 'fs';
 const request = supertest(app);
@@ -14,7 +14,6 @@ describe('Test responses from /images API', () => {
 
   describe('GET /api/images', () => {
     it('GET /api/images?filename=test should return 200', async () => {
-      // this should work, but it doesn't
       const response = await request.get('/api/images?filename=test');
       expect(response.status).toBe(200);
     });

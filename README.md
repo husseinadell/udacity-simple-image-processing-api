@@ -8,6 +8,7 @@ To get started developing right away:
 * build the project for production with `npm run build`
 * lint the code with `npm run lint`
 * run tests with `npm run test`
+* format the code with `npm run format`
 
 ### Usage
 The server will listen on port 3000:
