@@ -9,7 +9,7 @@ import {
 describe('Test image manager', (): void => {
   it('should list available images in full path', async (): Promise<void> => {
     const availableImages = await getAvailableImages();
-    expect(availableImages).toHaveSize(2);
+    expect(availableImages).toHaveSize(3);
   });
 
   it('should should get image Path', async (): Promise<void> => {
