@@ -11,7 +11,7 @@ const resizeImage = async (
   params: imageInputParams
 ): Promise<null | string> => {
   try {
-    console.log('[souce, target, width, height]', params);
+    // console.log('[souce, target, width, height]', params);
     await sharp(params.source)
       .resize(params.width, params.height)
       .toFormat('jpeg')

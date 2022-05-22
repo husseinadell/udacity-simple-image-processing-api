@@ -18,7 +18,7 @@ export const getResizedImageApi = async (req: Request, res: Response) => {
   const imageNameExists = availableImages.includes(fileName);
 
   if (!imageNameExists) {
-    res.send(
+    res.status(400).send(
       `Please pass a valid filename in the 'filename' query segment. 
       Available filenames are: ${availableImages.join(',')}.`
     );
@@ -27,10 +27,18 @@ export const getResizedImageApi = async (req: Request, res: Response) => {
 
   const width = parseInt(imageQuery.width || '');
   const height = parseInt(imageQuery.height || '');
+
+  if (!width && !height && fileName) {
+    const imagePath = await getImagePath({ filename: fileName });
+    res.sendFile(imagePath || '');
+    return;
+  }
   if (!width || width < 1 || !height || height < 1) {
-    res.send(
-      `Please pass valid width and height in the 'width' and 'height' query segments.`
-    );
+    res
+      .status(400)
+      .send(
+        `Please pass valid width and height in the 'width' and 'height' query segments.`
+      );
     return;
   }
 

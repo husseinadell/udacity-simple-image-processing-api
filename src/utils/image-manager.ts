@@ -2,13 +2,19 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import resizeImage from './resize-image';
 
-const fullImagesPath = path.resolve(__dirname, '../../assets/images/full');
-const thumbImagesPath = path.resolve(__dirname, '../../assets/images/thumb');
+export const fullImagesPath = path.resolve(
+  __dirname,
+  '../../assets/images/full'
+);
+export const thumbImagesPath = path.resolve(
+  __dirname,
+  '../../assets/images/thumb'
+);
 
-interface ImageParams {
+export interface ImageParams {
   filename: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
 export const getAvailableImages = async (): Promise<string[]> => {
