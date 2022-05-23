@@ -40,9 +40,12 @@ export const getImagePath = async (
 
     let filePath = '';
     if (imageParams.width && imageParams.height) {
-      filePath = `${thumbImagesPath}/${imageParams.filename}-${imageParams.width}x${imageParams.height}.jpg`;
+      filePath = path.resolve(
+        thumbImagesPath,
+        `${imageParams.filename}-${imageParams.width}x${imageParams.height}.jpg`
+      );
     } else {
-      filePath = `${fullImagesPath}/${imageParams.filename}.jpg`;
+      filePath = path.resolve(fullImagesPath, `${imageParams.filename}.jpg`);
     }
     await fs.access(filePath);
     return filePath;
