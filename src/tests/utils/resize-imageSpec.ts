@@ -46,8 +46,11 @@ describe('Test resizing images via sharp', (): void => {
     };
 
     const imageThumbPathResult = await resizeImage({
-      source: `${fullImagesPath}/test.jpg`,
-      target: `${thumbImagesPath}/test-${imageParams.width}x${imageParams.height}.jpg`,
+      source: path.resolve(fullImagesPath, `test.jpg`),
+      target: path.resolve(
+        thumbImagesPath,
+        `test-${imageParams.width}x${imageParams.height}.jpg`
+      ),
       width: imageParams.width,
       height: imageParams.height
     });
