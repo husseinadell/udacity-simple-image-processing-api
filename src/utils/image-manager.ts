@@ -17,6 +17,14 @@ export interface ImageParams {
   height?: number;
 }
 
+export const makeThumbPath = async (): Promise<void> => {
+  try {
+    await fs.access(thumbImagesPath);
+  } catch {
+    fs.mkdir(thumbImagesPath);
+  }
+};
+
 export const getAvailableImages = async (): Promise<string[]> => {
   const fileNames: string[] = await fs.readdir(fullImagesPath);
   return fileNames.map((fileName: string) => fileName.split('.')[0]);

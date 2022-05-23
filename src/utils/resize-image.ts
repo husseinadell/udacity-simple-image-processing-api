@@ -18,7 +18,8 @@ const resizeImage = async (
       .toFile(params.target);
 
     return params.target;
-  } catch {
+  } catch (error) {
+    console.log(error);
     return null;
   }
 };
